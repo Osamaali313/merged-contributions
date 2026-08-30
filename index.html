@@ -1,0 +1,241 @@
+<title>Merged</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --paper:#f6f5f8; --panel:#ffffff; --ink:#1a1622; --muted:#6a6478;
+  --line:#e5e2ec; --line-2:#efedf4;
+  --merge:#8957e5; --merge-ink:#6c3fd0; --merge-soft:#f0eafd;
+  --green:#1a7f37; --green-soft:#e7f4ea;
+  --star:#9a7b1f; --star-soft:#f6efdb;
+  --shadow:0 1px 2px rgba(26,22,34,.04),0 8px 24px rgba(26,22,34,.05);
+  --focus:#8957e5;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0e0c14; --panel:#161320; --ink:#e9e6f0; --muted:#9b93ac;
+    --line:#262234; --line-2:#1e1b29;
+    --merge:#a371f7; --merge-ink:#b98cff; --merge-soft:#231a38;
+    --green:#3fb950; --green-soft:#132a1a;
+    --star:#e3b341; --star-soft:#2a2413;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    --focus:#a371f7;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0e0c14; --panel:#161320; --ink:#e9e6f0; --muted:#9b93ac;
+  --line:#262234; --line-2:#1e1b29;
+  --merge:#a371f7; --merge-ink:#b98cff; --merge-soft:#231a38;
+  --green:#3fb950; --green-soft:#132a1a;
+  --star:#e3b341; --star-soft:#2a2413;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  --focus:#a371f7;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:clamp(24px,5vw,64px) clamp(18px,4vw,40px) 80px}
+a{color:inherit}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+.top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px}
+.eyebrow{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--merge-ink); font-weight:600}
+.theme-btn{border:1px solid var(--line); background:var(--panel); color:var(--muted);
+  border-radius:9px; padding:8px 11px; cursor:pointer; font-family:"IBM Plex Mono",monospace;
+  font-size:.75rem; display:inline-flex; align-items:center; gap:7px; box-shadow:var(--shadow)}
+.theme-btn:hover{color:var(--ink); border-color:var(--merge)}
+.theme-btn:focus-visible{outline:2px solid var(--focus); outline-offset:2px}
+
+h1{font-family:"Fraunces",Georgia,serif; font-weight:600; letter-spacing:-.02em;
+  font-size:clamp(2.6rem,8vw,5.2rem); line-height:.98; margin:.35em 0 0; text-wrap:balance}
+h1 .em{color:var(--merge); font-style:italic}
+.lede{margin:18px 0 0; color:var(--muted); font-size:clamp(1rem,2.2vw,1.18rem); max-width:60ch}
+.lede b{color:var(--ink); font-weight:600}
+.handle{color:var(--merge-ink); font-weight:600}
+
+.stats{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:38px 0 0}
+@media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+  padding:18px 18px 16px; box-shadow:var(--shadow)}
+.stat .n{font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.7rem,4vw,2.3rem);
+  line-height:1; letter-spacing:-.01em; font-variant-numeric:tabular-nums}
+.stat .l{margin-top:8px; font-family:"IBM Plex Mono",monospace; font-size:.7rem;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+
+.orgs{margin:34px 0 0}
+.orgs .cap{font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:12px}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{display:inline-flex; align-items:center; gap:8px; background:var(--panel);
+  border:1px solid var(--line); border-radius:999px; padding:6px 13px; font-size:.86rem; font-weight:500}
+.chip b{color:var(--merge-ink); font-family:"IBM Plex Mono",monospace; font-size:.78rem}
+
+.controls{position:sticky; top:0; z-index:5; margin:44px 0 0;
+  background:color-mix(in srgb,var(--paper) 88%,transparent); backdrop-filter:blur(8px);
+  padding:14px 0; display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+  border-bottom:1px solid var(--line)}
+.search{flex:1 1 260px; display:flex; align-items:center; gap:9px; background:var(--panel);
+  border:1px solid var(--line); border-radius:11px; padding:10px 13px; box-shadow:var(--shadow)}
+.search:focus-within{border-color:var(--merge)}
+.search input{border:0; background:transparent; color:var(--ink); font:inherit; width:100%; outline:none}
+.search svg{flex:none; color:var(--muted)}
+.sort{display:flex; gap:6px; align-items:center}
+.sort label{font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted)}
+.sort select{font:inherit; background:var(--panel); color:var(--ink); border:1px solid var(--line);
+  border-radius:10px; padding:9px 11px; cursor:pointer; box-shadow:var(--shadow)}
+.sort select:focus-visible{outline:2px solid var(--focus); outline-offset:1px}
+.count{font-family:"IBM Plex Mono",monospace; font-size:.76rem; color:var(--muted); margin-left:auto}
+
+.grid{margin:22px 0 0; display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+  padding:16px 17px 15px; display:flex; flex-direction:column; gap:11px; box-shadow:var(--shadow);
+  transition:border-color .15s ease, transform .15s ease}
+.card:hover{border-color:var(--merge); transform:translateY(-2px)}
+.card .r1{display:flex; justify-content:space-between; align-items:center; gap:10px}
+.repo{font-family:"IBM Plex Mono",monospace; font-size:.82rem; font-weight:500; color:var(--ink);
+  text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.repo:hover{color:var(--merge-ink); text-decoration:underline}
+.star{flex:none; display:inline-flex; align-items:center; gap:4px; background:var(--star-soft);
+  color:var(--star); border-radius:999px; padding:3px 9px; font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem; font-weight:600; font-variant-numeric:tabular-nums}
+.title{font-size:.98rem; line-height:1.4; color:var(--ink); margin:0}
+.r3{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  margin-top:auto; padding-top:4px}
+.merged{display:inline-flex; align-items:center; gap:6px; color:var(--green);
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600}
+.merged .dot{width:6px; height:6px; border-radius:50%; background:var(--green)}
+.date{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--muted)}
+.prlink{font-family:"IBM Plex Mono",monospace; font-size:.76rem; font-weight:600;
+  color:var(--merge-ink); text-decoration:none; display:inline-flex; align-items:center; gap:4px}
+.prlink:hover{text-decoration:underline}
+.prlink:focus-visible,.repo:focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:3px}
+.empty{grid-column:1/-1; text-align:center; color:var(--muted); padding:50px 0;
+  font-family:"IBM Plex Mono",monospace; font-size:.85rem}
+
+footer{margin:56px 0 0; padding-top:22px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+footer .mono{font-size:.74rem}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+.card{animation:rise .4s ease both}
+@keyframes rise{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:none}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="eyebrow">Open-source contributions</div>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle color theme"><span id="themeIcon">◐</span> <span id="themeTxt">Theme</span></button>
+  </div>
+
+  <h1>78 pull requests,<br><span class="em">merged.</span></h1>
+  <p class="lede">Bug fixes and improvements by <span class="handle">@Osamaali313</span>, accepted into <b>72 open-source projects</b> &mdash; from Microsoft, Google DeepMind and Hugging Face to indie tools. Every entry links to the merged PR.</p>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="orgs">
+    <div class="cap">Notable projects contributed to</div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="controls">
+    <label class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      <input id="q" type="search" placeholder="Search repo or fix…" aria-label="Search contributions" autocomplete="off">
+    </label>
+    <div class="sort">
+      <label for="sort">Sort</label>
+      <select id="sort">
+        <option value="new">Newest</option>
+        <option value="old">Oldest</option>
+        <option value="stars">Most stars</option>
+        <option value="repo">Repo A–Z</option>
+      </select>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    <span>Sourced live from GitHub &middot; all pull requests authored &amp; merged as <span class="mono">@Osamaali313</span></span>
+    <span class="mono" id="gen"></span>
+  </footer>
+</div>
+
+<script>
+const DATA = [{"repo": "andrewyng/openworker", "owner": "andrewyng", "num": 214, "title": "Fix attachment de-dup stripping real digits from the filename", "url": "https://github.com/andrewyng/openworker/pull/214", "date": "2026-08-23", "stars": 17055}, {"repo": "camel-ai/oasis", "owner": "camel-ai", "num": 226, "title": "fix(recsys): keep likes when a user has exactly 5 liked posts (off-by-one)", "url": "https://github.com/camel-ai/oasis/pull/226", "date": "2026-08-20", "stars": 5082}, {"repo": "i-am-bee/beeai-framework", "owner": "i-am-bee", "num": 1559, "title": "fix(internals): compare both matrices' column counts in cosineSimilarityMatrix", "url": "https://github.com/i-am-bee/beeai-framework/pull/1559", "date": "2026-08-19", "stars": 3383}, {"repo": "vercel-labs/skills", "owner": "vercel-labs", "num": 1953, "title": "fix: don't delete a skill from the same repo pinned to a different ref", "url": "https://github.com/vercel-labs/skills/pull/1953", "date": "2026-08-18", "stars": 30026}, {"repo": "antvis/Infographic", "owner": "antvis", "num": 251, "title": "fix(chart-wordcloud): use the datum index for data-indexes", "url": "https://github.com/antvis/Infographic/pull/251", "date": "2026-08-18", "stars": 6440}, {"repo": "VILA-Lab/FigMirror", "owner": "VILA-Lab", "num": 6, "title": "fix(runner): don't drop iteration 0 in the auto-finalize fallback", "url": "https://github.com/VILA-Lab/FigMirror/pull/6", "date": "2026-08-12", "stars": 510}, {"repo": "smixs/agent-second-brain", "owner": "smixs", "num": 17, "title": "fix(status): count forwarded messages by their actual [forward] marker", "url": "https://github.com/smixs/agent-second-brain/pull/17", "date": "2026-08-05", "stars": 359}, {"repo": "HKUDS/CLI-Anything", "owner": "HKUDS", "num": 387, "title": "fix(audacity): write 8-bit WAV as unsigned PCM", "url": "https://github.com/HKUDS/CLI-Anything/pull/387", "date": "2026-08-03", "stars": 48673}, {"repo": "strapi/strapi", "owner": "strapi", "num": 27132, "title": "fix(core): use configured default pageSize when only page is provided", "url": "https://github.com/strapi/strapi/pull/27132", "date": "2026-07-31", "stars": 73043}, {"repo": "Skyfay/SkySend", "owner": "Skyfay", "num": 65, "title": "Fix note detail showing \"/ 0 (-N remaining)\" for unlimited views", "url": "https://github.com/Skyfay/SkySend/pull/65", "date": "2026-07-30", "stars": 376}, {"repo": "huggingface/lerobot", "owner": "huggingface", "num": 4065, "title": "Fix Backtrackable.can_peek_back off-by-one contract violation", "url": "https://github.com/huggingface/lerobot/pull/4065", "date": "2026-07-30", "stars": 27073}, {"repo": "mastra-ai/mastra", "owner": "mastra-ai", "num": 18561, "title": "fix(core): keep non-text parts when flushing BatchPartsProcessor batches", "url": "https://github.com/mastra-ai/mastra/pull/18561", "date": "2026-07-30", "stars": 27577}, {"repo": "andialbrecht/sqlparse", "owner": "andialbrecht", "num": 867, "title": "Fix function grouping skipped for lowercase 'as' in CREATE TABLE AS SELECT", "url": "https://github.com/andialbrecht/sqlparse/pull/867", "date": "2026-07-25", "stars": 4015}, {"repo": "ashishpatel26/500-AI-Agents-Projects", "owner": "ashishpatel26", "num": 137, "title": "fix: stop duplicating class methods in documentation-writer agent", "url": "https://github.com/ashishpatel26/500-AI-Agents-Projects/pull/137", "date": "2026-07-25", "stars": 37213}, {"repo": "heyform/heyform", "owner": "heyform", "num": 302, "title": "Fix LRU cache evicting the most-recently-used entry", "url": "https://github.com/heyform/heyform/pull/302", "date": "2026-07-23", "stars": 8954}, {"repo": "huggingface/peft", "owner": "huggingface", "num": 3456, "title": "Fix BdLoraConfig.nblocks default being a tuple instead of an int", "url": "https://github.com/huggingface/peft/pull/3456", "date": "2026-07-22", "stars": 21609}, {"repo": "gotify/server", "owner": "gotify", "num": 1005, "title": "Fix unsynchronized map write in plugin Manager.RemoveUser", "url": "https://github.com/gotify/server/pull/1005", "date": "2026-07-22", "stars": 15820}, {"repo": "i-am-bee/beeai-framework", "owner": "i-am-bee", "num": 1566, "title": "fix(emitter): off() with a compiled regex should only remove the matching listener", "url": "https://github.com/i-am-bee/beeai-framework/pull/1566", "date": "2026-07-22", "stars": 3383}, {"repo": "666ghj/MiroFish", "owner": "666ghj", "num": 720, "title": "fix(frontend): show local date in history cards (matches displayed time)", "url": "https://github.com/666ghj/MiroFish/pull/720", "date": "2026-07-22", "stars": 71775}, {"repo": "Significant-Gravitas/AutoGPT", "owner": "Significant-Gravitas", "num": 13466, "title": "fix(frontend): handle GMT-offset zones in getTimezoneAbbreviation", "url": "https://github.com/Significant-Gravitas/AutoGPT/pull/13466", "date": "2026-07-22", "stars": 187017}, {"repo": "NVIDIA/garak", "owner": "NVIDIA", "num": 1976, "title": "Fix: continuation probe not pruning triggers with prompts", "url": "https://github.com/NVIDIA/garak/pull/1976", "date": "2026-07-21", "stars": 9079}, {"repo": "Priyanshu-1622/skiff", "owner": "Priyanshu-1622", "num": 4, "title": "Fix successful vault unlock not clearing prior failed attempts", "url": "https://github.com/Priyanshu-1622/skiff/pull/4", "date": "2026-07-21", "stars": 154}, {"repo": "i-am-bee/beeai-framework", "owner": "i-am-bee", "num": 1557, "title": "fix(emitter): match compiled regex anywhere in the event path", "url": "https://github.com/i-am-bee/beeai-framework/pull/1557", "date": "2026-07-21", "stars": 3383}, {"repo": "nowork-studio/notfair-plugin", "owner": "nowork-studio", "num": 92, "title": "Fix --no-open ignored on macOS and Windows in content-calendar viewer", "url": "https://github.com/nowork-studio/notfair-plugin/pull/92", "date": "2026-07-21", "stars": 3431}, {"repo": "super-productivity/super-productivity", "owner": "super-productivity", "num": 9178, "title": "Fix \"0 years ago\" for timestamps 330-364 days in the past", "url": "https://github.com/super-productivity/super-productivity/pull/9178", "date": "2026-07-20", "stars": 21675}, {"repo": "bluewave-labs/Checkmate", "owner": "bluewave-labs", "num": 3788, "title": "Fix missing \"Poor\" label on the average response-time gauge", "url": "https://github.com/bluewave-labs/Checkmate/pull/3788", "date": "2026-07-20", "stars": 10764}, {"repo": "huggingface/sentence-transformers", "owner": "huggingface", "num": 3872, "title": "Fix FAISS hard-negative mining retrieving too few candidates", "url": "https://github.com/huggingface/sentence-transformers/pull/3872", "date": "2026-07-20", "stars": 19048}, {"repo": "python/typeshed", "owner": "python", "num": 16042, "title": "Mark math.log parameters as positional-only", "url": "https://github.com/python/typeshed/pull/16042", "date": "2026-07-19", "stars": 5118}, {"repo": "gollem-dev/gollem", "owner": "gollem-dev", "num": 155, "title": "fix(history.go): deep-copy MessageContent.Meta in Clone", "url": "https://github.com/gollem-dev/gollem/pull/155", "date": "2026-07-19", "stars": 192}, {"repo": "vxcontrol/pentagi", "owner": "vxcontrol", "num": 364, "title": "fix(cast): delete pruned tool-call parts in reverse to avoid index shift", "url": "https://github.com/vxcontrol/pentagi/pull/364", "date": "2026-07-18", "stars": 22182}, {"repo": "browseros-ai/BrowserOS", "owner": "browseros-ai", "num": 1827, "title": "fix(claw-server): paginate listTasks by session via HAVING, not row WHERE", "url": "https://github.com/browseros-ai/BrowserOS/pull/1827", "date": "2026-07-16", "stars": 13406}, {"repo": "open-jarvis/OpenJarvis", "owner": "open-jarvis", "num": 640, "title": "fix(knowledge_sql): match write keywords on word boundaries (allow valid SELECTs)", "url": "https://github.com/open-jarvis/OpenJarvis/pull/640", "date": "2026-07-16", "stars": 9221}, {"repo": "eosphoros-ai/DB-GPT", "owner": "eosphoros-ai", "num": 3133, "title": "fix(rag): correct empty/non-list guard in TeiRerankEmbeddings._parse_results", "url": "https://github.com/eosphoros-ai/DB-GPT/pull/3133", "date": "2026-07-15", "stars": 19825}, {"repo": "keras-team/keras", "owner": "keras-team", "num": 23202, "title": "Fix get_training_or_validation_split returning empty training set when validation rounds to 0", "url": "https://github.com/keras-team/keras/pull/23202", "date": "2026-07-15", "stars": 64269}, {"repo": "nextlevelbuilder/goclaw", "owner": "nextlevelbuilder", "num": 1436, "title": "fix(slack): don't double-emit trailing text on odd number of ``` fences", "url": "https://github.com/nextlevelbuilder/goclaw/pull/1436", "date": "2026-07-14", "stars": 3577}, {"repo": "MervinPraison/PraisonAI", "owner": "MervinPraison", "num": 3027, "title": "fix(embedding): match model dimension keys case-insensitively (all-MiniLM-L6-v2)", "url": "https://github.com/MervinPraison/PraisonAI/pull/3027", "date": "2026-07-14", "stars": 8994}, {"repo": "moltis-org/moltis", "owner": "moltis-org", "num": 1145, "title": "fix(caldav): avoid panic on non-ASCII datetime in normalise_datetime", "url": "https://github.com/moltis-org/moltis/pull/1145", "date": "2026-07-14", "stars": 2841}, {"repo": "microsoft/agent-framework", "owner": "microsoft", "num": 6809, "title": "Python: fix: preserve function-call name when merging streaming deltas", "url": "https://github.com/microsoft/agent-framework/pull/6809", "date": "2026-07-14", "stars": 13223}, {"repo": "MiniMax-AI/cli", "owner": "MiniMax-AI", "num": 179, "title": "fix(args): honor explicit value on boolean flags (--flag=false)", "url": "https://github.com/MiniMax-AI/cli/pull/179", "date": "2026-07-14", "stars": 2078}, {"repo": "agentscope-ai/QwenPaw", "owner": "agentscope-ai", "num": 5791, "title": "fix(console): promote formatCompact unit on rounding rollover", "url": "https://github.com/agentscope-ai/QwenPaw/pull/5791", "date": "2026-07-13", "stars": 34696}, {"repo": "cloudflare/vibesdk", "owner": "cloudflare", "num": 393, "title": "fix(udiff): insert diff replacement content literally (avoid $-substitution)", "url": "https://github.com/cloudflare/vibesdk/pull/393", "date": "2026-07-13", "stars": 5339}, {"repo": "koala73/worldmonitor", "owner": "koala73", "num": 5139, "title": "fix(matcher): don't treat missing category as an exact category match", "url": "https://github.com/koala73/worldmonitor/pull/5139", "date": "2026-07-10", "stars": 85063}, {"repo": "vercel/workflow", "owner": "vercel", "num": 2687, "title": "fix(core): guard extractStreamIds against circular references", "url": "https://github.com/vercel/workflow/pull/2687", "date": "2026-07-09", "stars": 2363}, {"repo": "nextlevelbuilder/goclaw", "owner": "nextlevelbuilder", "num": 1398, "title": "fix(tools): avoid panic in StripToolPrefix on overlapping prefix+suffix", "url": "https://github.com/nextlevelbuilder/goclaw/pull/1398", "date": "2026-07-08", "stars": 3577}, {"repo": "agentscope-ai/QwenPaw", "owner": "agentscope-ai", "num": 5792, "title": "fix(agents): stop dropping self-paired tool messages during sanitation", "url": "https://github.com/agentscope-ai/QwenPaw/pull/5792", "date": "2026-07-08", "stars": 34696}, {"repo": "nextlevelbuilder/goclaw", "owner": "nextlevelbuilder", "num": 1387, "title": "fix(ui): strip trailing dashes in slugify", "url": "https://github.com/nextlevelbuilder/goclaw/pull/1387", "date": "2026-07-07", "stars": 3577}, {"repo": "MervinPraison/PraisonAI", "owner": "MervinPraison", "num": 2769, "title": "fix(rag): avoid panic when truncating context on a UTF-8 char boundary", "url": "https://github.com/MervinPraison/PraisonAI/pull/2769", "date": "2026-07-07", "stars": 8994}, {"repo": "LearningCircuit/local-deep-research", "owner": "LearningCircuit", "num": 4982, "title": "fix: formatBytes shows \"undefined\" for sizes >= 1 TB", "url": "https://github.com/LearningCircuit/local-deep-research/pull/4982", "date": "2026-07-07", "stars": 9006}, {"repo": "coollabsio/coolify", "owner": "coollabsio", "num": 10663, "title": "fix: accept underscores in domain hostnames for API URL validation", "url": "https://github.com/coollabsio/coolify/pull/10663", "date": "2026-07-07", "stars": 61225}, {"repo": "deepset-ai/haystack", "owner": "deepset-ai", "num": 11825, "title": "fix: populate _split_overlap metadata for word/token units in RecursiveDocumentSplitter", "url": "https://github.com/deepset-ai/haystack/pull/11825", "date": "2026-07-06", "stars": 26365}, {"repo": "danny-avila/LibreChat", "owner": "danny-avila", "num": 13999, "title": "🗄️ fix: Return Cached Transaction-Support Value on Cache Hit", "url": "https://github.com/danny-avila/LibreChat/pull/13999", "date": "2026-07-05", "stars": 42626}, {"repo": "elizaOS/eliza", "owner": "elizaOS", "num": 13647, "title": "fix(experience): de-duplicate findContradictions results", "url": "https://github.com/elizaOS/eliza/pull/13647", "date": "2026-07-04", "stars": 19215}, {"repo": "practical-tutorials/project-based-learning", "owner": "practical-tutorials", "num": 881, "title": "Fix dead 'Build a Reddit Bot' link", "url": "https://github.com/practical-tutorials/project-based-learning/pull/881", "date": "2026-07-04", "stars": 281380}, {"repo": "microsoft/vscode", "owner": "microsoft", "num": 323012, "title": "Zero-pad percent-encoding for code points below 0x10 in UriTemplate", "url": "https://github.com/microsoft/vscode/pull/323012", "date": "2026-07-03", "stars": 190065}, {"repo": "bytedance/deer-flow", "owner": "bytedance", "num": 3856, "title": "fix(harness): don't flag outline as truncated at exactly MAX_OUTLINE_ENTRIES headings", "url": "https://github.com/bytedance/deer-flow/pull/3856", "date": "2026-07-02", "stars": 81133}, {"repo": "VRSEN/agency-swarm", "owner": "VRSEN", "num": 707, "title": "fix: cascade orphaned-reasoning removal across consecutive reasoning items", "url": "https://github.com/VRSEN/agency-swarm/pull/707", "date": "2026-07-01", "stars": 4543}, {"repo": "microsoft/ai-dev-gallery", "owner": "microsoft", "num": 614, "title": "Validate HuggingFace URL prefix correctly in HuggingFaceUrl constructor", "url": "https://github.com/microsoft/ai-dev-gallery/pull/614", "date": "2026-07-01", "stars": 1498}, {"repo": "microsoft/WSL", "owner": "microsoft", "num": 40911, "title": "fix: use lowercased key when validating windowsterminal.profileTemplate", "url": "https://github.com/microsoft/WSL/pull/40911", "date": "2026-06-30", "stars": 33570}, {"repo": "vercel/chat", "owner": "vercel", "num": 651, "title": "fix(discord): don't mangle email addresses into mentions", "url": "https://github.com/vercel/chat/pull/651", "date": "2026-06-28", "stars": 2330}, {"repo": "microsoft/onnxruntime", "owner": "microsoft", "num": 29350, "title": "Fix FP8 (FLOAT8E4M3FN) quantization scale using wrong reference distribution", "url": "https://github.com/microsoft/onnxruntime/pull/29350", "date": "2026-06-27", "stars": 21680}, {"repo": "agno-agi/agno", "owner": "agno-agi", "num": 8554, "title": "fix: render numeric enums as numeric literal unions in token type formatting", "url": "https://github.com/agno-agi/agno/pull/8554", "date": "2026-06-25", "stars": 41970}, {"repo": "open-telemetry/opentelemetry-ebpf-profiler", "owner": "open-telemetry", "num": 1543, "title": "Fix infinite loop in lpm.CalculatePrefixList when start is 0", "url": "https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1543", "date": "2026-06-24", "stars": 3182}, {"repo": "ibm-granite/granite.build", "owner": "ibm-granite", "num": 122, "title": "Fix UnboundLocalError in get_yaml_patches_in_steps", "url": "https://github.com/ibm-granite/granite.build/pull/122", "date": "2026-06-24", "stars": 44}, {"repo": "google-deepmind/jax_privacy", "owner": "google-deepmind", "num": 267, "title": "docs(keras_api): correct train_steps formula to account for gradient accumulation", "url": "https://github.com/google-deepmind/jax_privacy/pull/267", "date": "2026-06-24", "stars": 191}, {"repo": "getmaxun/maxun", "owner": "getmaxun", "num": 1102, "title": "fix(storage): honor MINIO_PUBLIC_URL for browser-facing object URLs", "url": "https://github.com/getmaxun/maxun/pull/1102", "date": "2026-06-24", "stars": 17334}, {"repo": "amd/gaia", "owner": "amd", "num": 1824, "title": "Fix extract_json_from_text dropping JSON with a brace in a string value", "url": "https://github.com/amd/gaia/pull/1824", "date": "2026-06-23", "stars": 1535}, {"repo": "Natively-AI-assistant/natively-cluely-ai-assistant", "owner": "Natively-AI-assistant", "num": 330, "title": "Fix SSRF guard only blocking 127.0.0.1 instead of all of 127.0.0.0/8", "url": "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/pull/330", "date": "2026-06-22", "stars": 2386}, {"repo": "hydra-ecosystem/hydra", "owner": "hydra-ecosystem", "num": 3219, "title": "Fix sort() of a range() that does not land exactly on stop", "url": "https://github.com/hydra-ecosystem/hydra/pull/3219", "date": "2026-06-22", "stars": 10624}, {"repo": "ultralytics/yolov5", "owner": "ultralytics", "num": 13798, "title": "Fix segment2box empty-points check (len(x) instead of any(x))", "url": "https://github.com/ultralytics/yolov5/pull/13798", "date": "2026-06-21", "stars": 57941}, {"repo": "supabase/supabase", "owner": "supabase", "num": 46894, "title": "docs: fix broken Drizzle connection snippet (#43920)", "url": "https://github.com/supabase/supabase/pull/46894", "date": "2026-06-18", "stars": 108618}, {"repo": "latitude-dev/latitude-llm", "owner": "latitude-dev", "num": 3551, "title": "fix(utils): promote to next unit when rounding rolls over in formatCount/formatBytes", "url": "https://github.com/latitude-dev/latitude-llm/pull/3551", "date": "2026-06-16", "stars": 4608}, {"repo": "QwenLM/qwen-code", "owner": "QwenLM", "num": 5116, "title": "fix(channels): match sender id as a full segment in SessionRouter", "url": "https://github.com/QwenLM/qwen-code/pull/5116", "date": "2026-06-15", "stars": 27513}, {"repo": "google-deepmind/optax", "owner": "google-deepmind", "num": 1703, "title": "docs(losses): clarify cosine_similarity/cosine_distance epsilon clips the squared norm", "url": "https://github.com/google-deepmind/optax/pull/1703", "date": "2026-06-15", "stars": 2328}, {"repo": "JimLiu/baoyu-skills", "owner": "JimLiu", "num": 176, "title": "fix(baoyu-fetch): parse YouTube /embed/ URLs in parseYouTubeVideoId", "url": "https://github.com/JimLiu/baoyu-skills/pull/176", "date": "2026-06-10", "stars": 25483}, {"repo": "Leonxlnx/taste-skill", "owner": "Leonxlnx", "num": 51, "title": "fix(stitch-skill): correct dead Google Stitch prerequisite link", "url": "https://github.com/Leonxlnx/taste-skill/pull/51", "date": "2026-06-09", "stars": 82457}, {"repo": "pbakaus/impeccable", "owner": "pbakaus", "num": 230, "title": "fix(live-inject): preserve the character after an insertAfter anchor (#227)", "url": "https://github.com/pbakaus/impeccable/pull/230", "date": "2026-06-09", "stars": 64057}, {"repo": "Osamaali313/Generative_AI_Chatbot_for_Alzheimer_Disease_Using_Auto_Encoder", "owner": "Osamaali313", "num": 1, "title": "feat: Complete Next.js Alzheimer's Care Assistant web application", "url": "https://github.com/Osamaali313/Generative_AI_Chatbot_for_Alzheimer_Disease_Using_Auto_Encoder/pull/1", "date": "2025-11-16", "stars": 0}, {"repo": "Osamaali313/Youtube_Video_Summarizer_Using_Langchain_-_RAG", "owner": "Osamaali313", "num": 2, "title": "Claude/fullstack app setup 01 p8hm3 tp h uj xv jedw mm m3 xx", "url": "https://github.com/Osamaali313/Youtube_Video_Summarizer_Using_Langchain_-_RAG/pull/2", "date": "2025-11-16", "stars": 0}];
+const NOTABLE = [{"name": "Microsoft", "count": 5}, {"name": "Hugging Face", "count": 3}, {"name": "Google DeepMind", "count": 2}, {"name": "Vercel", "count": 2}, {"name": "AMD", "count": 1}, {"name": "Agno", "count": 1}, {"name": "AutoGPT", "count": 1}, {"name": "ByteDance", "count": 1}, {"name": "CAMEL-AI", "count": 1}, {"name": "Cloudflare", "count": 1}, {"name": "IBM Granite", "count": 1}, {"name": "Keras", "count": 1}, {"name": "NVIDIA", "count": 1}, {"name": "OpenTelemetry", "count": 1}, {"name": "Python", "count": 1}, {"name": "Qwen", "count": 1}, {"name": "Strapi", "count": 1}, {"name": "Supabase", "count": 1}, {"name": "Ultralytics", "count": 1}, {"name": "Vercel Labs", "count": 1}, {"name": "deepset", "count": 1}, {"name": "elizaOS", "count": 1}];
+const META = {"total_prs": 78, "total_repos": 72, "combined_stars": 2167445, "combined_stars_h": "2.2M", "span": "Nov 2025 – Aug 2026"};
+
+const $ = s => document.querySelector(s);
+const esc = s => (''+s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function hn(n){ if(n>=1e6) return (n/1e6).toFixed(1).replace(/\.0$/,'')+'M'; if(n>=1e3) return (n/1e3).toFixed(1).replace(/\.0$/,'')+'k'; return ''+n; }
+function fdate(d){ if(!d) return ''; const [y,m,day]=d.split('-'); const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]; return mo+' '+(+day)+', '+y; }
+
+$('#stats').innerHTML = [
+  [META.total_prs, 'Merged PRs'],
+  [META.total_repos, 'Repositories'],
+  [META.combined_stars_h+'+', 'Combined stars'],
+  [META.span, 'Active span'],
+].map(([n,l])=>`<div class="stat"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join('');
+
+$('#chips').innerHTML = NOTABLE.map(o=>`<span class="chip">${esc(o.name)} <b>${o.count}×</b></span>`).join('');
+
+const grid=$('#grid'), qEl=$('#q'), sortEl=$('#sort'), countEl=$('#count');
+
+function starHtml(n){ return n>0 ? `<span class="star" title="${n.toLocaleString()} stars">★ ${hn(n)}</span>` : ''; }
+
+function card(r){
+  return `<article class="card">
+    <div class="r1">
+      <a class="repo" href="https://github.com/${esc(r.repo)}" target="_blank" rel="noopener" title="${esc(r.repo)}">${esc(r.repo)}</a>
+      ${starHtml(r.stars)}
+    </div>
+    <p class="title">${esc(r.title)}</p>
+    <div class="r3">
+      <span class="merged"><span class="dot"></span>Merged · <span class="date">${esc(fdate(r.date))}</span></span>
+      <a class="prlink" href="${esc(r.url)}" target="_blank" rel="noopener">PR #${esc(r.num)} ↗</a>
+    </div>
+  </article>`;
+}
+
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let list = DATA.filter(r => !q || r.repo.toLowerCase().includes(q) || r.title.toLowerCase().includes(q));
+  const s = sortEl.value;
+  if(s==='new') list.sort((a,b)=> b.date.localeCompare(a.date));
+  else if(s==='old') list.sort((a,b)=> a.date.localeCompare(b.date));
+  else if(s==='stars') list.sort((a,b)=> b.stars-a.stars);
+  else if(s==='repo') list.sort((a,b)=> a.repo.toLowerCase().localeCompare(b.repo.toLowerCase()));
+  grid.innerHTML = list.length ? list.map(card).join('') : `<div class="empty">No contributions match “${esc(q)}”</div>`;
+  countEl.textContent = list.length===DATA.length ? `${DATA.length} contributions` : `${list.length} of ${DATA.length}`;
+}
+qEl.addEventListener('input', render);
+sortEl.addEventListener('change', ()=>{ render(); try{localStorage.setItem('mpr_sort',sortEl.value)}catch(e){} });
+try{ const sv=localStorage.getItem('mpr_sort'); if(sv) sortEl.value=sv; }catch(e){}
+render();
+
+const root=document.documentElement, tb=$('#themeBtn');
+function applyTheme(t){ if(t) root.setAttribute('data-theme',t); else root.removeAttribute('data-theme');
+  const dark = t ? t==='dark' : matchMedia('(prefers-color-scheme:dark)').matches;
+  $('#themeIcon').textContent = dark ? '◑' : '◐';
+}
+try{ const sv=localStorage.getItem('mpr_theme'); if(sv) applyTheme(sv); else applyTheme(null);}catch(e){ applyTheme(null); }
+tb.addEventListener('click', ()=>{
+  const cur = root.getAttribute('data-theme');
+  const dark = cur ? cur==='dark' : matchMedia('(prefers-color-scheme:dark)').matches;
+  const next = dark ? 'light' : 'dark';
+  applyTheme(next); try{localStorage.setItem('mpr_theme',next)}catch(e){}
+});
+
+$('#gen').textContent = 'as of Aug 2026';
+</script>
